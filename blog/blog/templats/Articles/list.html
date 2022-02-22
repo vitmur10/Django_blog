@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block name %}Послєдні статьї{% endblock %}
+
+{% block content %}
+
+    {% if latest_articles_list %}
+        {% for a in latest_articles_list %}
+            <a href="{% url 'Articles:deteil' a.id %}">{{a.name_article}}</a>
+        {% endfor %}
+
+    {% else %}
+        Статьї не знайдені
+    {% endif %}
+
+{% endblock %}
