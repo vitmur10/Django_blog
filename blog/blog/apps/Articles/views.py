@@ -3,6 +3,7 @@ from django.http import Http404, HttpResponseRedirect
 from .models import Article
 from django.urls import reverse
 from django.utils import timezone
+import requests
 
 
 def index(request):
@@ -31,3 +32,12 @@ def leave_comment(request, article_id):
     a.comment_set.create(name_user=request.POST['name'], text_comment=request.POST['text'], date_comment=timezone.now())
 
     return HttpResponseRedirect(reverse('Articles:deteil', args=(a.id,)))
+
+
+#Авторизація0Ю
+"""def authorization():
+    username =
+    password =
+    email =
+    first_name =
+    last_name ="""
