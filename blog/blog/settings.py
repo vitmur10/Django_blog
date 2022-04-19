@@ -42,7 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Articles.apps.ArticlesConfig',
+<<<<<<< HEAD
     'Login_in'
+=======
+    'Authorization.apps.AuthorizationConfig',
+>>>>>>> origin/main
 ]
 
 MIDDLEWARE = [
