@@ -2,14 +2,42 @@
 <html lang="en" style="font-size: 16px;">
 <style>
     body {
-        background-color: blue;
+        background-color: gray;
     }
 </style>
 
 <head>
     <meta charset="UTF-8">
     <title>{% block name %}Мій блог{% endblock %}</title>
+    <style>
+      button
+      {
+        display: block;
+        float: right;
+        margin-right: 25px;
+        padding: 15px 50px;
+        color: antiquewhite;
+
+        border-radius: 15px ;
+        border: 1px solid black;
+        text-decoration: none;
+        transition: color 0.5s , background 0.5s;
+      }
+
+      button:hover
+      {
+          color: gold;
+          background: blue;
+          border: 1xp solid blue;
+      }
+    </style>
 </head>
+{% if user.is.authenticated %}
+  <a href="/in/logout">Вийти({{user.username}})</a>
+{% else %}
+  <a href="/in/register">Регестрація</a>
+  <a href="/in/login">Вхід</a>
+{% endif %}
 <body>
 
     {% block content %}{% endblock %}
