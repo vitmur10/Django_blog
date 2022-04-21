@@ -17,10 +17,10 @@
 
 {% if latest_comment_list %}
     {% for c in latest_comment_list %}
-        <p>
-            <strong>{{c.name_user}}</strong>
-            <p>{{c.text_comment}}</p>
-            <p>{{c.date_comment}}</p>
+        <hr>
+             <strong>Ім'я користувача {{c.name_user}}</strong>
+            <p>Коментарій {{c.text_comment}}</p>
+            <p>Дата коментарія {{c.date_comment}}</p>
 
     {% endfor %}
 {% else %}
@@ -31,8 +31,11 @@
 <form action= "{% url 'Articles:leave_comment' article.id %}" method="POST">
 
     {% csrf_token %}
-
-    <input type = "text" required placeholder="Ваше ім'я" name="name"><br>
+    {% if user.is_authenticated %}
+        <p class="name">{{user.username}}</p>
+    {% else %}
+        <input name="name" required ="" placeholder="Ім'я користувача"><br>
+    {% endif %}
 
     <textarea name = "text" required ="" placeholder="Текст коментарія" cols = "30" rows = "10">
 

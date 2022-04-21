@@ -10,18 +10,19 @@ from django.contrib.auth.forms import AuthenticationForm
 
 
 class MainView(TemplateView):
-    template_name = 'button.html'
+    template_name = 'base.html'
 
     def get(self, request):
         if requests.user.is_autheticated:
             return render(request, self.template_name, {})
 
 
+
 class RegisterFormView(FormView):
     form_class = UserCreationForm
-    success_url = 'in/login/'
+    success_url = '/in/login/'
 
-    template_name = 'register.html'
+    template_name = 'Login_in/register.html'
 
     def form_valid(self, form):
         form.save()
@@ -32,3 +33,20 @@ class RegisterFormView(FormView):
         return super(RegisterFormView, self).form_invalid(form)
 
 
+class LoginFormView(FormView):
+    form_class = AuthenticationForm
+
+    template_name = 'Login_in/login.html'
+
+    success_url = '/'
+    
+    def form_valid(self, form):
+        self.user = form.get_user()
+        login(self.request, self.user)
+        return super(LoginFormView, self).form_valid(form)
+
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return HttpResponseRedirect('/')

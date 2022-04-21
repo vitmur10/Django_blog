@@ -6,7 +6,13 @@
     </head>
     <body>
         <form action="" method="post">{% csrf_token %}
-            {{form.as_p}}
+            {% for field in form %}
+            <label for="">{{field.label}}</label>
+            <div>{{field}}</div>
+            {% if field.errors %}
+                <p>{{field.errors}}</p>
+            {% endif %}
+            {% endfor %}
             <button type="submit">Зерегиструватися</button>
         </form>
 
