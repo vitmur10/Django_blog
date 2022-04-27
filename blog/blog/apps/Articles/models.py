@@ -8,7 +8,7 @@ from django.utils import timezone
 class Article(models.Model):
     name_article = models.CharField("ім'я статьї", max_length=150)
     text_article = models.TextField('Текст статьї')
-    pub_date = models.DateTimeField('дата публікації стітьї')
+    pub_date = models.DateTimeField('дата публікації стітьї', auto_now_add=True)
 
     def __str__(self):
         return self.name_article

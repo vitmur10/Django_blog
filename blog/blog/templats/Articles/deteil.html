@@ -26,16 +26,16 @@
 {% else %}
     Коментарії не знайдені
 {% endif %}
+
+{% if user.is_authenticated %}
 <hr>
 
 <form action= "{% url 'Articles:leave_comment' article.id %}" method="POST">
 
     {% csrf_token %}
-    {% if user.is_authenticated %}
-        <p class="name">{{user.username}}</p>
-    {% else %}
-        <input name="name" required ="" placeholder="Ім'я користувача"><br>
-    {% endif %}
+
+    <input name="name" required ="" placeholder="Ім'я користувача"><br>
+
 
     <textarea name = "text" required ="" placeholder="Текст коментарія" cols = "30" rows = "10">
 
@@ -44,5 +44,5 @@
     <button type="submit">Оставити коментарій</button>
 
 </form>
-
+{% endif %}
 {% endblock %}
