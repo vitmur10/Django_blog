@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.views.generic.edit import FormView
 from django.views.generic import TemplateView
-#from
-from django.contrib.auth.forms import UserCreationForm
+from .form import UserCreationForm
+#from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 from django.views.generic.base import View
 from django.contrib.auth import login, logout
